@@ -85,12 +85,12 @@ router.delete("/:id", async (req, res) => {
   }
 });
 
-async function validateGenreAsync(course) {
+async function validateGenreAsync(genre) {
   const schema = Joi.object({
     name: Joi.string().min(3).required(),
   });
 
-  return await schema.validateAsync(course);
+  return await schema.validateAsync(genre);
 }
 
 module.exports = router;
