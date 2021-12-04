@@ -4,8 +4,14 @@ const morgan = require("morgan");
 const express = require("express");
 const helmet = require("helmet");
 const genres = require("./routes/genres");
+const mongoose = require("mongoose");
 
 const app = express();
+
+mongoose
+  .connect("mongodb://localhost/vidly")
+  .then(() => console.log("Connected to MongoDB"))
+  .catch(() => console.error("Failed to connect to DB"));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
