@@ -4,6 +4,7 @@ const morgan = require("morgan");
 const express = require("express");
 const helmet = require("helmet");
 const genres = require("./routes/genres");
+const customers = require("./routes/customers");
 const mongoose = require("mongoose");
 
 const app = express();
@@ -17,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
 app.use("/api/genres", genres);
+app.use("/api/customers", customers);
 app.use(helmet());
 
 if (app.get("env") === "development") {
