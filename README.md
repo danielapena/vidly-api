@@ -7,6 +7,7 @@ This Backend service is made following the Node.js tutorial from [codewithmosh.c
 - Express: Server library
 - Joi: Used for validations
 - nodemon: Node watcher
+- mongoose: Mongo client
 
 ## Getting started
 
