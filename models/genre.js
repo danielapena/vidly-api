@@ -21,4 +21,5 @@ async function validateGenreAsync(genre) {
 }
 
 exports.Genre = Genre;
+exports.genreSchema = genreSchema;
 exports.validate = validateGenreAsync;

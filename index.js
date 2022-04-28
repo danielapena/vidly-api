@@ -1,11 +1,13 @@
+const express = require("express");
 const debug = require("debug")("app:startup");
 const logger = require("./middleware/logger");
 const morgan = require("morgan");
-const express = require("express");
 const helmet = require("helmet");
+const mongoose = require("mongoose");
+
 const genres = require("./routes/genres");
 const customers = require("./routes/customers");
-const mongoose = require("mongoose");
+const movies = require("./routes/movies");
 
 const app = express();
 
@@ -17,8 +19,11 @@ mongoose
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static("public"));
+
 app.use("/api/genres", genres);
 app.use("/api/customers", customers);
+app.use("/api/movies", movies);
+
 app.use(helmet());
 
 if (app.get("env") === "development") {
