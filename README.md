@@ -1,6 +1,9 @@
-# Vidly Project
+# Vidly API
 
-This Backend service is made following the Node.js tutorial from [codewithmosh.com](https://codewithmosh.com/)
+- Manage Movies
+- Manage Rentals
+- Manage Customers
+- Manage Genres
 
 ## Libraries
 
@@ -12,4 +15,4 @@ This Backend service is made following the Node.js tutorial from [codewithmosh.c
 ## Getting started
 
 - Run `npm i`.
-- Run `nodemon {x}.js` to launch a module
+- Run `npm start` to launch API
