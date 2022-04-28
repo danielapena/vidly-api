@@ -7,10 +7,10 @@
 
 ## Libraries
 
-- Express: Server library
-- Joi: Used for validations
-- nodemon: Node watcher
-- mongoose: Mongo client
+- Express
+- Joi
+- Nodemon
+- Mongoose
 
 ## Getting started
 
