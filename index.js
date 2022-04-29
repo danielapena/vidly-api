@@ -1,8 +1,10 @@
+const Joi = require("joi");
+Joi.objectId = require("joi-objectid")(Joi);
+const mongoose = require("mongoose");
 const express = require("express");
 const debug = require("debug")("app:startup");
 const morgan = require("morgan");
 const helmet = require("helmet");
-const mongoose = require("mongoose");
 
 const logger = require("./middleware/logger");
 

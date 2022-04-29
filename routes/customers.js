@@ -56,9 +56,9 @@ router.put("/:id", async (req, res) => {
       isGold: req.body.isGold,
       phone: req.body.phone,
     });
-    const result = await customer.save();
+    await customer.save();
 
-    res.send(result);
+    res.send(customer);
   } catch (error) {
     res.status(400).send(error.details?.map((e) => e.message) || error.message);
   }

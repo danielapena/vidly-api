@@ -16,8 +16,8 @@ router.post("/", async (req, res) => {
       name: req.body.name,
     });
 
-    const result = await genre.save();
-    res.send(result);
+    await genre.save();
+    res.send(genre);
   } catch (error) {
     res.status(400).send(error.details.map((e) => e.message) || error);
   }

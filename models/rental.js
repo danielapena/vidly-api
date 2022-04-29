@@ -59,8 +59,8 @@ const Rental = mongoose.model("Rental", rentalSchema);
 
 const validateRentalAsync = async (rental) => {
   const schema = Joi.object({
-    movieId: Joi.string().required(),
-    customerId: Joi.string().required(),
+    movieId: Joi.objectId().required(),
+    customerId: Joi.objectId().required(),
     daysRented: Joi.number().min(1).required(),
   });
 

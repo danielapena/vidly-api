@@ -35,7 +35,7 @@ router.post("/", async (req, res) => {
       return res.status(400).send("Movie not in stock");
     }
 
-    let rental = new Rental({
+    const rental = new Rental({
       customer: {
         _id: customer.id,
         name: customer.name,
