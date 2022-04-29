@@ -1,9 +1,10 @@
 const express = require("express");
 const debug = require("debug")("app:startup");
-const logger = require("./middleware/logger");
 const morgan = require("morgan");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
+
+const logger = require("./middleware/logger");
 
 const genres = require("./routes/genres");
 const customers = require("./routes/customers");

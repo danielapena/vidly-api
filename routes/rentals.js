@@ -1,10 +1,14 @@
+const mongoose = require("mongoose");
 const express = require("express");
+const Fawn = require("fawn");
 
 const { Rental, validate } = require("../models/rental");
 const { Customer } = require("../models/customer");
 const { Movie } = require("../models/movie");
 
 const router = express.Router();
+
+Fawn.init("mongodb://localhost/vidly"); // TODO: Fix this, it's breaking when calling mongoose from require import Fawn.init(mongoose)
 
 router.get("/", async (req, res) => {
   const rentals = await Rental.find().sort("-rentedOn");
@@ -46,10 +50,21 @@ router.post("/", async (req, res) => {
       totalAmount: req.body.daysRented * movie.dailyRentalRate,
     });
 
-    movie.numberInStock--;
-    movie.save();
+    try {
+      new Fawn.Task()
+        .save("rentals", rental)
+        .update(
+          "movies",
+          { _id: movie._id },
+          {
+            $inc: { numberInStock: -1 },
+          }
+        )
+        .run();
+    } catch (error) {
+      res.status(500).send("Something failed");
+    }
 
-    rental = await rental.save();
     res.send(rental);
   } catch (error) {
     res
