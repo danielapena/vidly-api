@@ -1,3 +1,4 @@
+const config = require("config");
 const mongoose = require("mongoose");
 const express = require("express");
 const Fawn = require("fawn");
@@ -8,7 +9,7 @@ const { Movie } = require("../models/movie");
 
 const router = express.Router();
 
-Fawn.init("mongodb://localhost/vidly"); // TODO: Fix this, it's breaking when calling mongoose from require import Fawn.init(mongoose)
+Fawn.init(config.get("dbConnection")); // TODO: Fix this, it's breaking when calling mongoose from require import Fawn.init(mongoose)
 
 router.get("/", async (req, res) => {
   const rentals = await Rental.find().sort("-rentedOn");

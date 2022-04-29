@@ -24,7 +24,7 @@ if (!config.get("jwtPrivateKey")) {
 }
 
 mongoose
-  .connect("mongodb://localhost/vidly")
+  .connect(config.get("dbConnection"))
   .then(() => console.log("Connected to MongoDB"))
   .catch(() => console.error("Failed to connect to DB"));
 
