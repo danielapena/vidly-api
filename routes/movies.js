@@ -93,7 +93,7 @@ router.delete("/:id", [auth, admin], async (req, res) => {
     const movie = await Movie.findByIdAndRemove(id);
 
     if (!movie) {
-      res.status(404).send("The Movie was not found");
+      return res.status(404).send("The Movie was not found");
     }
 
     res.send(movie);
