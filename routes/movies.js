@@ -1,6 +1,7 @@
 const express = require("express");
 
 const auth = require("../middleware/auth");
+const admin = require("../middleware/admin");
 const { Movie, validate } = require("../models/movie");
 const { Genre } = require("../models/genre");
 
@@ -86,7 +87,7 @@ router.put("/:id", auth, async (req, res) => {
   }
 });
 
-router.delete("/:id", auth, async (req, res) => {
+router.delete("/:id", [auth, admin], async (req, res) => {
   try {
     const id = req.params.id;
     const movie = await Movie.findByIdAndRemove(id);
