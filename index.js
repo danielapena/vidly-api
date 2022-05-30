@@ -1,3 +1,4 @@
+require('express-async-errors');
 const config = require("config");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
@@ -8,6 +9,7 @@ const morgan = require("morgan");
 const helmet = require("helmet");
 
 const logger = require("./middleware/logger");
+const error = require("./middleware/error");
 
 const genres = require("./routes/genres");
 const users = require("./routes/users");
@@ -47,6 +49,7 @@ if (app.get("env") === "development") {
 }
 
 app.use(logger);
+app.use(error);
 
 const port = process.env.PORT || 3000;
 app.listen(port, () => console.log(`Listening on port ${port}`));
