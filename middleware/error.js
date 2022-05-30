@@ -1,4 +1,6 @@
+logger = require("./logger");
+
 module.exports = function (err, req, res, next) {
-    // TODO: Log the exception
-    res.status(500).send("Something failed.")
-}
+  logger.error(err.message, err);
+  res.status(500).send("Something failed.");
+};

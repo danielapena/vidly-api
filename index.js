@@ -1,4 +1,4 @@
-require('express-async-errors');
+require("express-async-errors");
 const config = require("config");
 const Joi = require("joi");
 Joi.objectId = require("joi-objectid")(Joi);
@@ -8,7 +8,6 @@ const debug = require("debug")("app:startup");
 const morgan = require("morgan");
 const helmet = require("helmet");
 
-const logger = require("./middleware/logger");
 const error = require("./middleware/error");
 
 const genres = require("./routes/genres");
@@ -48,7 +47,6 @@ if (app.get("env") === "development") {
   debug("Morgan enabled...");
 }
 
-app.use(logger);
 app.use(error);
 
 const port = process.env.PORT || 3000;
