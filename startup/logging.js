@@ -10,6 +10,9 @@ module.exports = winston.createLogger({
   transports: [
     new winston.transports.Console({
       handleExceptions: true,
+      colorize: true,
+      prettyPrint: true,
+      level: "error",
     }),
     new winston.transports.MongoDB({
       db: config.get("dbConnection"),
