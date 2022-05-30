@@ -13,7 +13,6 @@
   "dependencies": {
     "bcrypt": "^5.0.1",
     "config": "^3.3.7",
-    "debug": "^4.3.3",
     "express": "^4.17.1",
     "express-async-errors": "^3.1.1",
     "fawn": "^2.1.5",
@@ -22,7 +21,6 @@
     "joi-objectid": "^4.0.2",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^6.0.14",
-    "morgan": "^1.10.0",
     "nodemon": "^2.0.15",
     "winston": "^3.7.2",
     "winston-mongodb": "^5.0.7"
