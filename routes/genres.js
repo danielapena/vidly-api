@@ -2,6 +2,7 @@ const express = require("express");
 const { Genre, validate } = require("../models/genre");
 const auth = require("../middleware/auth");
 const admin = require("../middleware/admin");
+const validateObjectId = require("../middleware/validateObjectId");
 
 const router = express.Router();
 
@@ -25,9 +26,10 @@ router.post("/", auth, async (req, res) => {
   }
 });
 
-router.get("/:id", async (req, res) => {
+router.get("/:id", validateObjectId, async (req, res) => {
   try {
     const id = req.params.id;
+
     const genre = await Genre.findById(id);
 
     if (!genre) {
